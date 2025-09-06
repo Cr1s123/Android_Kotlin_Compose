@@ -1,4 +1,4 @@
-package com.example.listaimagenes.model
+package com.example.listaimagenes.data.model
 
 
 data class ImagenItem(

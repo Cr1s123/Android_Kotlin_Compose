@@ -1,15 +1,46 @@
+# ======================
+# Archivos de Android Studio / IntelliJ
+# ======================
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+.idea/
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+
+# ======================
+# Gradle
+# ======================
+.gradle/
+build/
+*/build/
+captures/
+.externalNativeBuild/
+.cxx/
+.kotlinc/
+
+# ======================
+# Archivos locales
+# ======================
 local.properties
+*.keystore
+*.jks
+
+# ======================
+# Archivos de sistema
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# Logs y reportes
+# ======================
+*.log
+*.hprof
+
+# ======================
+# Test / Coverage
+# ======================
+coverage/

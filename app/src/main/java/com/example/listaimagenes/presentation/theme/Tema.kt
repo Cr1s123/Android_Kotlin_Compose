@@ -11,16 +11,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val EsquemaOscuro = darkColorScheme(
-    primary = ColoresApp.Principal,
-    secondary = ColoresApp.TextoSecundario,
-    tertiary = ColoresApp.TextoBlanco
+    primary = ColoresApp.Primario,
+    secondary = ColoresApp.Secundario,
+    tertiary = ColoresApp.Confirmacion,
+    error = ColoresApp.Error,
+    onPrimary = ColoresApp.TextoInverso,
+    onSecondary = ColoresApp.TextoPrincipal,
+    onTertiary = ColoresApp.TextoInverso
 )
 
 private val EsquemaClaro = lightColorScheme(
-    primary = ColoresApp.Principal,
-    secondary = ColoresApp.TextoSecundario,
-    tertiary = ColoresApp.TextoBlanco
+    primary = ColoresApp.Primario,
+    secondary = ColoresApp.Secundario,
+    tertiary = ColoresApp.Confirmacion,
+    error = ColoresApp.Error,
+    onPrimary = ColoresApp.TextoInverso,
+    onSecondary = ColoresApp.TextoPrincipal,
+    onTertiary = ColoresApp.TextoInverso
 )
+
+
 
 @Composable
 fun TemaApp(

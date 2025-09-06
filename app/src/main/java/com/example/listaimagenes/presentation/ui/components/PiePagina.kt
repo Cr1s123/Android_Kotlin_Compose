@@ -4,6 +4,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import com.example.listaimagenes.presentation.theme.AppTypography
 import com.example.listaimagenes.presentation.theme.ColoresApp
 import com.example.listaimagenes.presentation.theme.Tamaños
 import com.example.listaimagenes.presentation.utils.obtenerHoraActual
@@ -26,7 +27,7 @@ fun PiePagina(modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .padding(Tamaños.EspacioChico),
         textAlign = TextAlign.Center,
-        fontSize = Tamaños.TextoPie,
+        style = AppTypography.labelSmall,
         color = ColoresApp.TextoSecundario
     )
 }

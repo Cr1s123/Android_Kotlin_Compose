@@ -10,6 +10,7 @@ import androidx.compose.ui.res.painterResource
 import com.example.listaimagenes.presentation.theme.ColoresApp
 import com.example.listaimagenes.presentation.theme.Tamaños
 import com.example.listaimagenes.R
+import com.example.listaimagenes.presentation.theme.AppTypography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -21,21 +22,25 @@ fun BarraSuperior(
         title = {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth()
+                horizontalArrangement = Arrangement.Start
             ) {
                 Image(
                     painter = painterResource(id = logoId),
                     contentDescription = "Logo institucional",
                     modifier = Modifier.size(Tamaños.Logo)
                 )
+                Spacer(modifier = Modifier.width(Tamaños.EspacioChico))
                 Text(
                     text = titulo,
-                    fontSize = Tamaños.TextoTitulo,
-                    color = ColoresApp.TextoBlanco
+                    style = AppTypography.titleLarge.copy(
+                        color = ColoresApp.TextoInverso
+                    )
                 )
             }
         },
-        colors = TopAppBarDefaults.topAppBarColors(containerColor = ColoresApp.Principal)
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = ColoresApp.Primario,
+            titleContentColor = ColoresApp.TextoInverso
+        )
     )
 }

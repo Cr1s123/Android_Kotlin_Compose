@@ -10,37 +10,36 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+private val EsquemaOscuro = darkColorScheme(
+    primary = ColoresApp.Principal,
+    secondary = ColoresApp.TextoSecundario,
+    tertiary = ColoresApp.TextoBlanco
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+private val EsquemaClaro = lightColorScheme(
+    primary = ColoresApp.Principal,
+    secondary = ColoresApp.TextoSecundario,
+    tertiary = ColoresApp.TextoBlanco
 )
 
 @Composable
-fun ListaImagenesTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
+fun TemaApp(
+    temaOscuro: Boolean = isSystemInDarkTheme(),
+    colorDinamico: Boolean = true,
+    contenido: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+    val esquemaColor = when {
+        colorDinamico && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            val contexto = LocalContext.current
+            if (temaOscuro) dynamicDarkColorScheme(contexto) else dynamicLightColorScheme(contexto)
         }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        temaOscuro -> EsquemaOscuro
+        else -> EsquemaClaro
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
+        colorScheme = esquemaColor,
+        typography = AppTypography,
+        content = contenido
     )
 }

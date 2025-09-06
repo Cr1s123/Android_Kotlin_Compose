@@ -1,9 +1,9 @@
-package com.example.listaimagenes.presentations.theme
+package com.example.listaimagenes.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
-object AppColors {
-    val Primary = Color(0xFF00695C)
-    val OnPrimary = Color.White
-    val TextSecondary = Color.Gray
+object ColoresApp {
+    val Principal = Color(0xFF00695C)
+    val TextoBlanco = Color.White
+    val TextoSecundario = Color.Gray
 }

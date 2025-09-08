@@ -8,6 +8,6 @@ object ColoresApp {
     val TextoPrincipal = Color.Black
     val TextoSecundario = Color.Gray
     val TextoInverso = Color.White
-    val Confirmacion = Color(0xFF388E3C) // verde
-    val Error = Color(0xFFD32F2F)        // rojo
+    val Confirmacion = Color(0xFF388E3C)
+    val Error = Color(0xFFD32F2F)
 }

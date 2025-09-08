@@ -1,10 +1,10 @@
 package com.example.listaimagenes.data.repository
 
 import com.example.listaimagenes.R
-import com.example.listaimagenes.data.model.FacultadAgregada
+import com.example.listaimagenes.data.model.Facultad
 
-class RepositorioFacultadAgregada {
-    private val _facultadesAgregadas = mutableListOf<FacultadAgregada>()
+class RepositorioFacultad {
+    private val _facultadesAgregadas = mutableListOf<Facultad>()
 
     private val mapaImagenes = mapOf(
         "Agronomía" to R.drawable.agronomia,
@@ -47,7 +47,7 @@ class RepositorioFacultadAgregada {
         return facultadesBase.filter { it !in nombresAgregados }
     }
 
-    fun obtenerFacultadesAgregadas(): List<FacultadAgregada> {
+    fun obtenerFacultadesAgregadas(): List<Facultad> {
         return _facultadesAgregadas.toList()
     }
 
@@ -58,7 +58,7 @@ class RepositorioFacultadAgregada {
             return false
         }
 
-        val nuevaFacultad = FacultadAgregada(
+        val nuevaFacultad = Facultad(
             nombre = nombre,
             descripcion = descripcion,
             año = año,
@@ -77,7 +77,7 @@ class RepositorioFacultadAgregada {
         _facultadesAgregadas.clear()
     }
 
-    fun buscarPorNombre(nombre: String): FacultadAgregada? {
+    fun buscarPorNombre(nombre: String): Facultad? {
         return _facultadesAgregadas.find { it.nombre == nombre }
     }
 }

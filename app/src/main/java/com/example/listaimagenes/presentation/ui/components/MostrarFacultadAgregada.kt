@@ -23,14 +23,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.listaimagenes.data.model.FacultadAgregada
+import com.example.listaimagenes.data.model.Facultad
 import com.example.listaimagenes.presentation.theme.AppTypography
 import com.example.listaimagenes.presentation.theme.ColoresApp
 import com.example.listaimagenes.presentation.theme.Tamaños
 
 @Composable
 fun MostrarFacultadAgregada(
-    facultad: FacultadAgregada,
+    facultad: Facultad,
     alEliminar: () -> Unit,
     modifier: Modifier = Modifier
 ) {

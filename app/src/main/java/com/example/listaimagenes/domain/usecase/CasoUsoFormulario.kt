@@ -1,16 +1,16 @@
 package com.example.listaimagenes.domain.usecase
 
-import com.example.listaimagenes.data.model.FacultadAgregada
-import com.example.listaimagenes.data.repository.RepositorioFacultadAgregada
+import com.example.listaimagenes.data.model.Facultad
+import com.example.listaimagenes.data.repository.RepositorioFacultad
 
 class CasoUsoFormulario(
-    private val repositorio: RepositorioFacultadAgregada
+    private val repositorio: RepositorioFacultad
 ) {
     fun obtenerFacultadesDisponibles(): List<String> {
         return repositorio.obtenerFacultadesDisponibles()
     }
 
-    fun obtenerFacultadesAgregadas(): List<FacultadAgregada> {
+    fun obtenerFacultadesAgregadas(): List<Facultad> {
         return repositorio.obtenerFacultadesAgregadas()
     }
 
@@ -30,7 +30,7 @@ class CasoUsoFormulario(
         repositorio.limpiarTodas()
     }
 
-    fun buscarPorNombre(nombre: String): FacultadAgregada? {
+    fun buscarPorNombre(nombre: String): Facultad? {
         return repositorio.buscarPorNombre(nombre)
     }
 }

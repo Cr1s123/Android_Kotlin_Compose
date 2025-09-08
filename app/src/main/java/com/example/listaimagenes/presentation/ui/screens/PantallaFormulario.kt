@@ -17,17 +17,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.listaimagenes.data.repository.RepositorioFacultadAgregada
-import com.example.listaimagenes.domain.usecase.CasoUsoFormulario
 import com.example.listaimagenes.presentation.theme.AppTypography
 import com.example.listaimagenes.presentation.theme.ColoresApp
 import com.example.listaimagenes.presentation.theme.Tamaños
@@ -41,15 +36,9 @@ import kotlinx.coroutines.delay
 fun PantallaFormulario(
     alIrAVisualizacion: () -> Unit
 ) {
-    val repositorio = remember { RepositorioFacultadAgregada() }
-    val casoUso = remember { CasoUsoFormulario(repositorio) }
-    val viewModel: ViewModelFormulario = viewModel {
-        ViewModelFormulario(casoUso)
-    }
-
+    val viewModel: ViewModelFormulario = viewModel()
     val estado by viewModel.estado.collectAsState()
 
-    // Efecnavegar después to para del éxito
     LaunchedEffect(estado.mensajeExito) {
         if (estado.mensajeExito.isNotEmpty()) {
             delay(1500)
@@ -68,7 +57,6 @@ fun PantallaFormulario(
                 .padding(Tamaños.EspacioGrande),
             verticalArrangement = Arrangement.spacedBy(Tamaños.EspacioChico)
         ) {
-            // Dropdown de facultades disponibles
             if (estado.facultadesDisponibles.isNotEmpty()) {
                 MenuFacultadesDisponibles(
                     facultadSeleccionada = estado.facultadSeleccionadaFormulario,
@@ -76,7 +64,6 @@ fun PantallaFormulario(
                     alSeleccionar = viewModel::seleccionarFacultadFormulario
                 )
 
-                // Campo descripción
                 OutlinedTextField(
                     value = estado.descripcion,
                     onValueChange = viewModel::actualizarDescripcion,
@@ -89,7 +76,6 @@ fun PantallaFormulario(
                     singleLine = false
                 )
 
-                // Campo año
                 OutlinedTextField(
                     value = estado.año,
                     onValueChange = viewModel::actualizarAño,
@@ -100,7 +86,6 @@ fun PantallaFormulario(
                     singleLine = true
                 )
 
-                // Botón enviar
                 Button(
                     onClick = viewModel::enviarFormulario,
                     modifier = Modifier
@@ -117,7 +102,6 @@ fun PantallaFormulario(
                     )
                 }
             } else {
-                // No hay facultades disponibles
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     colors = CardDefaults.cardColors(
@@ -132,16 +116,15 @@ fun PantallaFormulario(
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
-
-                Button(
-                    onClick = alIrAVisualizacion,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text("Ir a Visualización", style = AppTypography.labelLarge)
-                }
             }
 
-            // Mensajes de error
+            Button(
+                onClick = alIrAVisualizacion,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Ir a Visualización", style = AppTypography.labelLarge)
+            }
+
             if (estado.mensajeError.isNotEmpty()) {
                 Card(
                     colors = CardDefaults.cardColors(
@@ -157,7 +140,6 @@ fun PantallaFormulario(
                 }
             }
 
-            // Mensajes de éxito
             if (estado.mensajeExito.isNotEmpty()) {
                 Card(
                     colors = CardDefaults.cardColors(

@@ -16,13 +16,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.example.listaimagenes.data.model.FacultadAgregada
+import com.example.listaimagenes.data.model.Facultad
 
 @Composable
 fun MenuFacultadesAgregadas(
-    facultadSeleccionada: FacultadAgregada?,
-    facultadesAgregadas: List<FacultadAgregada>,
-    alSeleccionar: (String) -> Unit,
+    facultadSeleccionada: Facultad?,
+    facultadesAgregadas: List<Facultad>,
+    alSeleccionar: (Facultad) -> Unit,   // 👈 ahora recibe Facultad
     modifier: Modifier = Modifier
 ) {
     var expandido by remember { mutableStateOf(false) }
@@ -35,10 +35,7 @@ fun MenuFacultadesAgregadas(
             readOnly = true,
             trailingIcon = {
                 IconButton(onClick = { expandido = !expandido }) {
-                    Icon(
-                        Icons.Default.ArrowDropDown,
-                        contentDescription = "Abrir menú"
-                    )
+                    Icon(Icons.Default.ArrowDropDown, contentDescription = "Abrir menú")
                 }
             },
             modifier = Modifier.fillMaxWidth()
@@ -52,7 +49,7 @@ fun MenuFacultadesAgregadas(
                 DropdownMenuItem(
                     text = { Text(facultad.nombre) },
                     onClick = {
-                        alSeleccionar(facultad.nombre)
+                        alSeleccionar(facultad)
                         expandido = false
                     }
                 )

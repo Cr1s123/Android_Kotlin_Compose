@@ -9,12 +9,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.listaimagenes.data.repository.RepositorioFacultadAgregada
-import com.example.listaimagenes.domain.usecase.CasoUsoFormulario
 import com.example.listaimagenes.presentation.theme.Tamaños
 import com.example.listaimagenes.presentation.ui.components.BarraSuperior
 import com.example.listaimagenes.presentation.ui.components.DialogoConfirmacion
@@ -28,10 +25,7 @@ import com.example.listaimagenes.presentation.viewmodel.ViewModelFormulario
 fun PantallaVisualizacion(
     alVolverFormulario: () -> Unit
 ) {
-    val repositorio = remember { RepositorioFacultadAgregada() }
-    val casoUso = remember { CasoUsoFormulario(repositorio) }
-    val viewModel: ViewModelFormulario = viewModel { ViewModelFormulario(casoUso) }
-
+    val viewModel: ViewModelFormulario = viewModel()
     val estado by viewModel.estado.collectAsState()
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -45,20 +39,17 @@ fun PantallaVisualizacion(
             verticalArrangement = Arrangement.spacedBy(Tamaños.EspacioChico)
         ) {
             if (estado.facultadesAgregadas.isNotEmpty()) {
-                // Dropdown
                 MenuFacultadesAgregadas(
                     facultadSeleccionada = estado.facultadSeleccionadaVisualizacion,
                     facultadesAgregadas = estado.facultadesAgregadas,
                     alSeleccionar = viewModel::seleccionarFacultadVisualizacion
                 )
 
-                // Botones
                 AccionesVisualizacion(
                     alVolverFormulario = alVolverFormulario,
                     alLimpiarTodo = viewModel::mostrarConfirmacionLimpiar
                 )
 
-                // Facultad seleccionada
                 estado.facultadSeleccionadaVisualizacion?.let { facultad ->
                     Spacer(modifier = Modifier.height(Tamaños.EspacioGrande))
                     MostrarFacultadAgregada(

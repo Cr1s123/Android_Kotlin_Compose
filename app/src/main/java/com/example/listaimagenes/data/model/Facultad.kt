@@ -1,6 +1,6 @@
 package com.example.listaimagenes.data.model
 
-data class FacultadAgregada(
+data class Facultad(
     val nombre: String,
     val descripcion: String,
     val año: Int,
